@@ -1,0 +1,27 @@
+name: Docker
+
+on:
+  push:
+    branches: [ "main" ]
+    # Publish semver tags as releases.
+    # tags: [ 'v*.*.*' ]
+  pull_request:
+    branches: [ "main" ]
+  # lehetővé teszi, hogy "kézzel" elindítsam a folyamatot
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: generate image tag
+      run: |
+        echo "IMAGE_TAG=$(date +%s)" >> $GITHUB_ENV
+
+    - uses: actions/checkout@v4
+    - name: Checkout repository
+      run: | 
+        docker build . --file Dockerfile --tag ghcr.io/bandi3028/cicd-k8s:$IMAGE_TAG
+        docker login ghcr.io -u bandi3028 -p ${{ secrets.GHCR_TOKEN }}
+        docker push ghcr.io/bandi3028/cicd-k8s:$IMAGE_TAG
