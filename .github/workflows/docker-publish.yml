@@ -41,3 +41,13 @@ jobs:
         else
           echo "No changes to commit"
         fi
+
+        mkdir -p ~/.kube
+        echo "${{ secrets.JEDLIK_K8S_CONFIG }}" | base64 -d > ~/.kube/config
+        kubectl apply -f ./test-deployment.yaml
+
+
+#config fájl base64-be kódolása
+#$bytes = [System.IO.File]::ReadAllBytes("$env:USERPROFILE\.kube\config")
+#[System.Convert]::ToBase64String($bytes)
+# mentés secretbe-> JEDLIK_K8S_CONFIG
