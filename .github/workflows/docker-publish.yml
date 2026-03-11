@@ -28,7 +28,9 @@ jobs:
 
         sed -i 's|image: ghcr.io/bandi3028/cicd-k8s:.*|image: ghcr/bandi3028/cicd-k8s:'"$IMAGE_TAG'|' test-deployment.yaml
 
-        cat test-deployment.yaml
+        git add test-deployment.yaml
+        git commit -m "update K8S deployment file"
+        git push
 
 
 
