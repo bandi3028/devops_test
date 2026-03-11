@@ -36,9 +36,3 @@ jobs:
         git add test-deployment.yaml
         git commit -m "update K8S deployment file"
         git push
-
-
-
-# TODO: kubectl apply
-#       congif-nak secretbe másolása
-#       "vissza" kellpush-olni a módosított yaml fájlt
