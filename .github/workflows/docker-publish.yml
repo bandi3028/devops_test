@@ -26,7 +26,7 @@ jobs:
         docker login ghcr.io -u bandi3028 -p ${{ secrets.GHCR_TOKEN }}
         docker push ghcr.io/bandi3028/cicd-k8s:$IMAGE_TAG
 
-        sed -i 's|image: ghcr.io/bandi3028/cicd-k8s:.*|image: ghcr/bandi3028/cicd-k8s:'"$IMAGE_TAG'|' test-deployment.yaml
+        sed -i 's|image: ghcr.io/bandi3028/cicd-k8s:.*|image: ghcr/bandi3028/cicd-k8s:'"$IMAGE_TAG"'|' test-deployment.yaml
 
         git config --global user.email "andris.moldovan@gmail.com"
         git config --global user.name "bandi3028"
