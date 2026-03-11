@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: cicd-test-0309-container
-          image: ghcr.io/bandi3028/cicd-k8s:1773058672
+          image: ghcr/bandi3028/cicd-k8s:1773217538
           ports:
             - containerPort: 80
       imagePullSecrets:
